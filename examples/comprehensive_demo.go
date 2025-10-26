@@ -6,10 +6,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/core"
-	"github.com/gointellect/gointellect/pkg/data"
-	"github.com/gointellect/gointellect/pkg/nn"
-	"github.com/gointellect/gointellect/pkg/train"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/data"
+	"github.com/wallaceokeke/GOintellect/pkg/nn"
+	"github.com/wallaceokeke/GOintellect/pkg/train"
 )
 
 func RunComprehensiveDemo() {

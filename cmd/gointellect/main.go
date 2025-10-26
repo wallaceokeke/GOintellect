@@ -6,7 +6,7 @@ import (
     "os"
     "strconv"
 
-    "github.com/gointellect/gointellect/pkg/learn"
+    "github.com/wallaceokeke/GOintellect/pkg/learn"
 )
 
 func printHelp() {

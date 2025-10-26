@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
 )
 
 // Dataset represents a dataset with features and targets

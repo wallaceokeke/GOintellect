@@ -1,4 +1,4 @@
-module github.com/gointellect/gointellect
+module github.com/wallaceokeke/GOintellect
 
 go 1.22
 

@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
 )
 
 // Layer interface defines the contract for neural network layers

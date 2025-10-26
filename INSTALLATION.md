@@ -10,16 +10,16 @@ gointellect is designed to be easily installable by Go developers worldwide. Her
 
 ```bash
 # Install the latest stable version
-go get github.com/gointellect/gointellect
+go get github.com/wallaceokeke/GOintellect
 
 # Install a specific version
-go get github.com/gointellect/gointellect@v1.0.0
+go get github.com/wallaceokeke/GOintellect@v1.0.0
 
 # Install the latest development version
-go get github.com/gointellect/gointellect@main
+go get github.com/wallaceokeke/GOintellect@main
 
 # Update to the latest version
-go get -u github.com/gointellect/gointellect
+go get -u github.com/wallaceokeke/GOintellect
 ```
 
 ### 2. Using go mod init (for new projects)
@@ -41,9 +41,9 @@ package main
 
 import (
     "fmt"
-    "github.com/gointellect/gointellect/pkg/core"
-    "github.com/gointellect/gointellect/pkg/nn"
-    "github.com/gointellect/gointellect/pkg/train"
+    "github.com/wallaceokeke/GOintellect/pkg/core"
+    "github.com/wallaceokeke/GOintellect/pkg/nn"
+    "github.com/wallaceokeke/GOintellect/pkg/train"
 )
 
 func main() {
@@ -66,24 +66,24 @@ go run main.go
 
 ```bash
 # Pull the official gointellect Docker image
-docker pull gointellect/gointellect:latest
+docker pull GOintellect/GOintellect:latest
 
 # Run the comprehensive demo
-docker run --rm gointellect/gointellect:latest go run examples/comprehensive_demo.go
+docker run --rm GOintellect/GOintellect:latest go run examples/comprehensive_demo.go
 
 # Run the steroids-level demo
-docker run --rm gointellect/gointellect:latest go run examples/steroids_demo.go
+docker run --rm GOintellect/GOintellect:latest go run examples/steroids_demo.go
 ```
 
 ### 4. Building from Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/gointellect/gointellect.git
-cd gointellect
+git clone https://github.com/wallaceokeke/GOintellect.git
+cd GOintellect
 
 # Build the CLI tool
-go build -o gointellect ./cmd/gointellect
+go build -o GOintellect ./cmd/GOintellect
 
 # Run examples
 go run examples/demo_train_predict.go
@@ -100,7 +100,7 @@ package main
 
 import (
     "fmt"
-    "github.com/gointellect/gointellect/pkg/core"
+    "github.com/wallaceokeke/GGOintellect/pkg/core"
 )
 
 func main() {
@@ -135,9 +135,9 @@ import (
     "math/rand"
     "time"
     
-    "github.com/gointellect/gointellect/pkg/core"
-    "github.com/gointellect/gointellect/pkg/nn"
-    "github.com/gointellect/gointellect/pkg/train"
+    "github.com/wallaceokeke/GOintellect/pkg/core"
+    "github.com/wallaceokeke/GOintellect/pkg/nn"
+    "github.com/wallaceokeke/GOintellect/pkg/train"
 )
 
 func main() {
@@ -197,8 +197,8 @@ import (
     "fmt"
     "log"
     
-    "github.com/gointellect/gointellect/pkg/core"
-    "github.com/gointellect/gointellect/pkg/data"
+    "github.com/wallaceokeke/GOintellect/pkg/core"
+    "github.com/wallaceokeke/GOintellect/pkg/data"
 )
 
 func main() {
@@ -241,13 +241,13 @@ After installation, verify that gointellect is working correctly:
 
 ```bash
 # Check if the module is available
-go list -m github.com/gointellect/gointellect
+go list -m github.com/wallaceokeke/GOintellect
 
 # Run the basic demo
-go run -m github.com/gointellect/gointellect/examples/demo_train_predict.go
+go run -m github.com/wallaceokeke/GOintellect/examples/demo_train_predict.go
 
 # Run the comprehensive demo
-go run -m github.com/gointellect/gointellect/examples/comprehensive_demo.go
+go run -m github.com/wallaceokeke/GOintellect/examples/comprehensive_demo.go
 ```
 
 ## 🐛 Troubleshooting
@@ -258,14 +258,14 @@ go run -m github.com/gointellect/gointellect/examples/comprehensive_demo.go
    ```bash
    # Ensure Go modules are enabled
    export GO111MODULE=on
-   go get github.com/gointellect/gointellect
+   go get github.com/wallaceokeke/GOintellect
    ```
 
 2. **Version conflicts**
    ```bash
    # Clean module cache
    go clean -modcache
-   go get github.com/gointellect/gointellect
+   go get github.com/wallaceokeke/GOintellect
    ```
 
 3. **Build errors**
@@ -277,8 +277,8 @@ go run -m github.com/gointellect/gointellect/examples/comprehensive_demo.go
 
 ### Getting Help
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/gointellect/gointellect/issues)
-- **Documentation**: Check the [README.md](https://github.com/gointellect/gointellect/blob/main/README.md)
+- **GitHub Issues**: [Report bugs and request features](https://github.com/wallaceokeke/GOintellect/issues)
+- **Documentation**: Check the [README.md](https://github.com/wallaceokeke/GOintellect/blob/main/README.md)
 - **Examples**: Run the provided examples in the `examples/` directory
 
 ## 🎯 Next Steps

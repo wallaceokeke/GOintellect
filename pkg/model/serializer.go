@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/nn"
+	"github.com/wallaceokeke/Gointellect/pkg/nn"
 )
 
 // Alias Conv2DLayer to the type defined in the nn package to resolve undefined identifier.

@@ -6,12 +6,12 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/automl"
-	"github.com/gointellect/gointellect/pkg/core"
-	"github.com/gointellect/gointellect/pkg/model"
-	"github.com/gointellect/gointellect/pkg/nn"
-	"github.com/gointellect/gointellect/pkg/serving"
-	"github.com/gointellect/gointellect/pkg/train"
+	"github.com/wallaceokeke/GOintellect/pkg/automl"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/model"
+	"github.com/wallaceokeke/GOintellect/pkg/nn"
+	"github.com/wallaceokeke/GOintellect/pkg/serving"
+	"github.com/wallaceokeke/GOintellect/pkg/train"
 )
 
 func RunDemos() {

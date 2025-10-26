@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/core"
-	"github.com/gointellect/gointellect/pkg/nn"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/nn"
 )
 
 // Trainer handles the training process

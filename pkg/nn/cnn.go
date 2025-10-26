@@ -3,7 +3,7 @@ package nn
 import (
 	"math"
 
-	"github.com/gointellect/gointellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
 )
 
 // Conv2DLayer represents a 2D convolutional layer

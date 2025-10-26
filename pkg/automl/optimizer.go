@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gointellect/gointellect/pkg/core"
+	"github.com/wallaceokeke/GOintellect/pkg/core"
 )
 
 // HyperparameterSearchSpace defines the search space for hyperparameters

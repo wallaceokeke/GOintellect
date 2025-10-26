@@ -1,0 +1,205 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [1.22, 1.23]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: ${{ matrix.go-version }}
+    
+    - name: Cache Go modules
+      uses: actions/cache@v3
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+    
+    - name: Download dependencies
+      run: go mod download
+    
+    - name: Verify dependencies
+      run: go mod verify
+    
+    - name: Format check
+      run: |
+        if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then
+          echo "The following files are not formatted:"
+          gofmt -s -l .
+          exit 1
+        fi
+    
+    - name: Vet
+      run: go vet ./...
+    
+    - name: Build
+      run: go build -v ./...
+    
+    - name: Test
+      run: go test -v -race -coverprofile=coverage.out ./...
+    
+    - name: Test coverage
+      run: go tool cover -html=coverage.out -o coverage.html
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.out
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
+
+  examples:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+    
+    - name: Download dependencies
+      run: go mod download
+    
+    - name: Run basic example
+      run: go run examples/demo_train_predict.go
+    
+    - name: Run comprehensive example
+      run: go run examples/comprehensive_demo.go
+    
+    - name: Run steroids example
+      run: go run examples/steroids_demo.go
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+    
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: latest
+        args: --timeout=5m
+
+  security:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+    
+    - name: Run Gosec Security Scanner
+      uses: securecodewarrior/github-action-gosec@master
+      with:
+        args: '-fmt sarif -out gosec.sarif ./...'
+    
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: gosec.sarif
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test, examples, lint]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+    
+    - name: Download dependencies
+      run: go mod download
+    
+    - name: Build CLI tool
+      run: go build -o gointellect ./cmd/gointellect
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: gointellect-cli
+        path: gointellect
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: [test, examples]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build Docker image
+      run: docker build -t gointellect:latest .
+    
+    - name: Test Docker image
+      run: docker run --rm gointellect:latest go version
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [test, examples, lint, security, build, docker]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: 1.22
+    
+    - name: Download dependencies
+      run: go mod download
+    
+    - name: Build for multiple platforms
+      run: |
+        GOOS=linux GOARCH=amd64 go build -o gointellect-linux-amd64 ./cmd/gointellect
+        GOOS=windows GOARCH=amd64 go build -o gointellect-windows-amd64.exe ./cmd/gointellect
+        GOOS=darwin GOARCH=amd64 go build -o gointellect-darwin-amd64 ./cmd/gointellect
+        GOOS=darwin GOARCH=arm64 go build -o gointellect-darwin-arm64 ./cmd/gointellect
+    
+    - name: Create release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          gointellect-linux-amd64
+          gointellect-windows-amd64.exe
+          gointellect-darwin-amd64
+          gointellect-darwin-arm64
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

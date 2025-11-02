@@ -30,13 +30,13 @@ go get github.com/gointellect/gointellect
 
 ```bash
 # Install specific version
-go get github.com/gointellect/gointellect@v1.0.0
+go get github.com/wallaceokeke/GOintellect@v1.0.0
 
 # Install latest development version
-go get github.com/gointellect/gointellect@main
+go get github.com/wallaceokeke/GOintellect@main
 
 # Update to latest version
-go get -u github.com/gointellect/gointellect
+go get -u github.com/wallaceokeke/GOintellect
 ```
 
 ## 🎯 Quick Start
@@ -47,7 +47,7 @@ package main
 
 import (
     "fmt"
-    "github.com/gointellect/gointellect/pkg/core"
+    "github.com/wallaceokeke/GOintellect/pkg/core"
 )
 
 func main() {
@@ -82,9 +82,9 @@ func main() {
 package main
 
 import (
-    "github.com/gointellect/gointellect/pkg/core"
-    "github.com/gointellect/gointellect/pkg/nn"
-    "github.com/gointellect/gointellect/pkg/train"
+    "github.com/wallaceokeke/GOintellect/pkg/core"
+    "github.com/wallaceokeke/GOintellect/pkg/nn"
+    "github.com/wallaceokeke/GOintellect/pkg/train"
 )
 
 func main() {
@@ -128,7 +128,7 @@ func main() {
 package main
 
 import (
-    "github.com/gointellect/gointellect/pkg/data"
+    "github.com/wallaceokeke/GOintellect/pkg/data"
 )
 
 func main() {
@@ -197,10 +197,10 @@ go build ./cmd/gointellect
 
 ```bash
 # Build Docker image
-docker build -t gointellect:latest .
+docker build -t GOintellect:latest .
 
 # Run examples
-docker run --rm gointellect go run examples/comprehensive_demo.go
+docker run --rm GOintellect go run examples/comprehensive_demo.go
 ```
 
 ## 📚 Examples
@@ -272,7 +272,7 @@ We welcome contributions from developers of all skill levels! Here's how you can
 1. **Fork the repository** and clone your fork
 2. **Read our [Contributing Guide](CONTRIBUTING.md)** for detailed instructions
 3. **Check our [Developer Onboarding Guide](DEVELOPER_ONBOARDING.md)** for setup help
-4. **Look for [good first issues](https://github.com/gointellect/gointellect/labels/good-first-issue)** to get started
+4. **Look for [good first issues](https://github.com/wallaceokeke/GOintellect/labels/good-first-issue)** to get started
 5. **Join our [Discord community](https://discord.gg/gointellect)** for real-time help
 
 ### **Community Guidelines**

@@ -15,9 +15,9 @@ Welcome to the gointellect development team! 🚀 This guide will help you get u
 1. **Fork and Clone**
    ```bash
    # Fork the repository on GitHub first
-   git clone https://github.com/YOUR_USERNAME/gointellect.git
+   git clone https://github.com/YOUR_USERNAME/GOintellect.git
    cd gointellect
-   git remote add upstream https://github.com/gointellect/gointellect.git
+   git remote add upstream https://github.com/wallaceokeke/GOintellect.git
    ```
 
 2. **Install Dependencies**
